@@ -1,5 +1,7 @@
-# cloud-run-sqlite
+# Cloud Run SQLite
 
+A simple example of a Node.js app reading from a SQLite database.
+To read it from Cloud Run, we leverage a Cloud Storage volume mount.
 
 ## Start locally:
 
@@ -17,7 +19,7 @@ npm run populate
 ## Deploy server to Cloud Run
 
 ```
-export PROJECT_ID="steren-playground"
+export PROJECT_ID="steren-playground" # Update with your GCP project ID
 export REGION="us-central1"
 export SERVICE="cloud-run-sqlite"
 
