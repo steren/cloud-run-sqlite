@@ -9,7 +9,8 @@ async function getBooks() {
   ];
 }
 
-const db = new sqlite3.Database('./data/books.db');
+const path = process.env.DB_PATH || './data';
+const db = new sqlite3.Database(path + '/books.db');
 db.serialize(async () => {
   db.run("CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT)");
   console.log('Created table books');

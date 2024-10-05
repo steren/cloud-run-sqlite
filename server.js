@@ -1,7 +1,8 @@
 import http from 'http';
 import sqlite3 from 'sqlite3';
 
-const db = new sqlite3.Database('./data/books.db'); // Use a file-based database
+const path = process.env.DB_PATH || './data';
+const db = new sqlite3.Database(path + '/books.db');
 
 db.serialize(() => {
   const requestListener = (req, res) => {
