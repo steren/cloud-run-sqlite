@@ -7,6 +7,9 @@ const db = new sqlite3.Database(path + '/books.db');
 db.serialize(() => {
   const requestListener = (req, res) => {
     if (req.method === 'GET') {
+      // Only *read* from the SQLite database.
+      // Do not attempt to *write* to the database from the Cloud Run service which automatically scales to multiple instances.
+      // SQLite isn't designed to be written from multiple instances.
       db.all('SELECT * FROM books', (err, rows) => {
         if (err) {
           res.writeHead(500);

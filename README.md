@@ -3,6 +3,11 @@
 A simple example of a Node.js app reading from a SQLite database.
 To read it from Cloud Run, we leverage a Cloud Storage volume mount.
 
+> [!WARNING]  
+> Only *read* from the SQLite database.
+> Do not attempt to *write* to the database from the Cloud Run service which automatically scales to multiple instances.
+> SQLite isn't designed to be written from multiple instances.
+
 ## Start locally:
 
 ```
